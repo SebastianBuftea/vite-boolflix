@@ -1,5 +1,11 @@
 <script>
+import { store } from './store.js';
 export default {
+  data() {
+    return {
+      store,
+    }
+  },
 
 }
 </script>
@@ -10,6 +16,7 @@ export default {
   </div>
 </template>
 
-<style lang="">
-  
+<style lang="scss">
+@use './styles/generals.scss' as*;
+@use './styles/partials/variables' as*;
 </style>
