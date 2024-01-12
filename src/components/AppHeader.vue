@@ -1,6 +1,20 @@
 <script>
+import { store } from '../store.js';
+import axios from 'axios';
+
 export default {
     name: 'AppHeader',
+    data() {
+        return {
+            store,
+        }
+    },
+    methods: {
+        findFilms() {
+            let UrlFilmsComplete = `${store.filmsApi}?${store.keyApi}&query=${store.search}`
+            console.log(UrlFilmsComplete)
+        }
+    },
 
 }
 </script>
@@ -11,10 +25,13 @@ export default {
             <div class="row d-flex justify-content-between align-items-center">
                 <div class="title w_auto">BOOLFLIX</div>
                 <div class="w_auto">
-                    <input class=" me-2 p-1" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-danger" type="submit">Search</button>      
+                    <input class=" me-2 p-1" type="search" placeholder="Search" aria-label="Search" 
+                    v-model="store.search" id="search"
+                    @keyup.enter="findFilms">
+                    <button class="btn btn-outline-danger" type="submit" @click="findFilms">Search</button>      
                 </div>
             </div>
+            
          </div>
     </header>
     
