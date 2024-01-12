@@ -11,8 +11,11 @@ export default {
     },
     methods: {
         findFilms() {
-            let UrlFilmsComplete = `${store.filmsApi}?${store.keyApi}&query=${store.search}`
-            console.log(UrlFilmsComplete)
+            let UrlFilmsComplete = `${store.filmsApi}?api_key=${store.keyApi}&query=${store.search}`
+            axios.get(UrlFilmsComplete).then((response) => {
+                this.store.filmsShowed = response.data.results
+
+            })
         }
     },
 
