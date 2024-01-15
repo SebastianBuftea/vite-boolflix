@@ -10,7 +10,7 @@ export default {
         }
     },
     methods: {
-        findFilms() {
+        findMovies() {
             let UrlFilmsComplete = `${store.filmsApi}?api_key=${store.keyApi}&query=${store.search}`
             axios.get(UrlFilmsComplete).then((response) => {
                 let movies_response = response.data.results;
@@ -22,6 +22,20 @@ export default {
                         vote: element.vote_average
                     }
                     this.store.filmsShowed.push(obj)
+                });
+
+            })
+            let UrlTvseriesComplete = `${store.tvSeriesApi}?api_key=${store.keyApi}&query=${store.search}`
+            axios.get(UrlTvseriesComplete).then((response) => {
+                let movies_response = response.data.results;
+                movies_response.forEach(element => {
+                    let obj = {
+                        title: element.name,
+                        originalTitle: element.original_name,
+                        language: element.original_language,
+                        vote: element.vote_average
+                    }
+                    this.store.seriesShowed.push(obj)
                 });
 
             })
@@ -39,8 +53,8 @@ export default {
                 <div class="w_auto">
                     <input class=" me-2 p-1" type="search" placeholder="Search" aria-label="Search" 
                     v-model="store.search" id="search"
-                    @keyup.enter="findFilms">
-                    <button class="btn btn-outline-danger" type="submit" @click="findFilms">Search</button>      
+                    @keyup.enter="findMovies">
+                    <button class="btn btn-outline-danger" type="submit" @click="findMovies">Search</button>      
                 </div>
             </div>
             
