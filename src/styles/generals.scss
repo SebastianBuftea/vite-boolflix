@@ -20,6 +20,10 @@ body {
     width: auto;
 }
 
+h3 {
+    @include bolder_white
+}
+
 h4 {
     font-size: larger;
     @include bolder_white

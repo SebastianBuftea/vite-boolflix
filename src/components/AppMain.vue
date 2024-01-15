@@ -19,14 +19,14 @@ export default {
 
 <template lang="">
     <div class="container my-3">
-        
-        <h1>FILM</h1>
+
+        <h3 class="my-3">FILM:</h3>
         <div class="row ">
             <AppCardFilm v-for="(film, index) in store.filmsShowed" :key="index" class="col-6 col-md-3 col-xl-2" :media="film">                   
             </AppCardFilm>
         </div>
 
-        <h1>Serie TV</h1>
+        <h3 class="my-3">Serie TV:</h3>
         <div class="row ">
             <AppCardFilm v-for="(serie, index) in store.seriesShowed" :key="index" class="col-6 col-md-3 col-xl-2" :media="serie">                   
             </AppCardFilm>
