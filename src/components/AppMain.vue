@@ -12,14 +12,14 @@ export default {
 </script>
 
 <template lang="">
-    <div class="container">
+    <div class="container my-3">
         <div class="row">
             <div v-for="(film, index) in store.filmsShowed" :key="index" class=" col-6 col-md-3 col-xl-2">
-                <div class="card_">
+                <div class="card_ m-1 p-1">
                     <h4> <strong>Title:</strong> {{film.title}}</h4>
                     <h5><strong>Original Title:</strong> {{film.originalTitle}}</h5>
-                    <h5><strong>Language:</strong>{{film.language}}</h5>
-                    <h5><strong>Vote:</strong>{{film.vote}}</h5>
+                    <h5><strong>Language:</strong> {{film.language}}</h5>
+                    <h5><strong>Vote:</strong> {{film.vote}}</h5>
                 </div>
                
             </div>
@@ -33,10 +33,10 @@ export default {
 @use '../styles/partials/variables' as*;
 
 .card_ {
-    margin: 10px;
+    background-color: black;
     border: 1px solid black;
     width: 100%;
     height: 300px;
-    background-color: white;
+
 }
 </style>
