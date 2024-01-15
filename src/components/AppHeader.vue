@@ -11,15 +11,20 @@ export default {
     },
     methods: {
         findMovies() {
+            this.store.filmsShowed = []
+            this.store.seriesShowed = []
+
             let UrlFilmsComplete = `${store.filmsApi}?api_key=${store.keyApi}&query=${store.search}`
             axios.get(UrlFilmsComplete).then((response) => {
                 let movies_response = response.data.results;
                 movies_response.forEach(element => {
                     let obj = {
+
                         title: element.title,
                         originalTitle: element.original_title,
                         language: element.original_language,
-                        vote: element.vote_average
+                        vote: element.vote_average,
+                        image: element.backdrop_path
                     }
                     this.store.filmsShowed.push(obj)
                 });
@@ -33,7 +38,8 @@ export default {
                         title: element.name,
                         originalTitle: element.original_name,
                         language: element.original_language,
-                        vote: element.vote_average
+                        vote: element.vote_average,
+                        image: element.backdrop_path
                     }
                     this.store.seriesShowed.push(obj)
                 });

@@ -24,6 +24,7 @@ export default {
 <template lang="">
     <div>
         <div class="card_ p-1 m-1">
+            <img :src="media.image==null ? `https://demofree.sirv.com/nope-not-here.jpg`:` https://image.tmdb.org/t/p/w185${media.image}`" alt="">
             <h4> <strong>Title:</strong> {{media.title}}</h4>
             <h5><strong>Original Title:</strong> {{media.originalTitle}}</h5>
             <h5><strong>Language:</strong> {{media.language}}</h5>
@@ -42,6 +43,12 @@ export default {
     background-color: black;
     border: 1px solid black;
     width: 100%;
-    height: 300px;
+    height: 350px;
+
+    img {
+        width: 100%;
+        height: 150px;
+        object-fit: fill;
+    }
 }
 </style>
