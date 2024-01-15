@@ -1,8 +1,12 @@
 <script>
 import { store } from '../store.js';
+import AppCardFilm from './AppCardFilm.vue';
 
 export default {
     name: 'AppMain',
+    components: {
+        AppCardFilm
+    },
     data() {
         return {
             store
@@ -13,16 +17,10 @@ export default {
 
 <template lang="">
     <div class="container my-3">
-        <div class="row">
-            <div v-for="(film, index) in store.filmsShowed" :key="index" class=" col-6 col-md-3 col-xl-2">
-                <div class="card_ m-1 p-1">
-                    <h4> <strong>Title:</strong> {{film.title}}</h4>
-                    <h5><strong>Original Title:</strong> {{film.originalTitle}}</h5>
-                    <h5><strong>Language:</strong> {{film.language}}</h5>
-                    <h5><strong>Vote:</strong> {{film.vote}}</h5>
-                </div>
-               
-            </div>
+        <h1>FILM</h1>
+        <div class="row ">
+            <AppCardFilm v-for="(film, index) in store.filmsShowed" :key="index" class="col-6 col-md-3 col-xl-2" :media="film">                   
+            </AppCardFilm>
         </div>
         
     </div>
@@ -31,12 +29,4 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/generals.scss' as*;
 @use '../styles/partials/variables' as*;
-
-.card_ {
-    background-color: black;
-    border: 1px solid black;
-    width: 100%;
-    height: 300px;
-
-}
 </style>
