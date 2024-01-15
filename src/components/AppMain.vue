@@ -2,10 +2,12 @@
 import { store } from '../store.js';
 import AppCardFilm from './AppCardFilm.vue';
 
+
 export default {
     name: 'AppMain',
     components: {
-        AppCardFilm
+        AppCardFilm,
+
     },
     data() {
         return {

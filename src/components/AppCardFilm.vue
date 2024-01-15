@@ -1,9 +1,13 @@
 <script>
 import { store } from '../store.js';
+import CountryFlag from 'vue-country-flag-next'
 export default {
     name: 'AppCardFilm',
     props: {
         media: Object,
+    },
+    components: {
+        CountryFlag
     },
 
     data() {
@@ -11,6 +15,7 @@ export default {
             store
 
         }
+
     },
 
 }
@@ -22,7 +27,9 @@ export default {
             <h4> <strong>Title:</strong> {{media.title}}</h4>
             <h5><strong>Original Title:</strong> {{media.originalTitle}}</h5>
             <h5><strong>Language:</strong> {{media.language}}</h5>
+            <country-flag :country="media.language=='en' ? 'gb':media.language" size='normal'/>
             <h5><strong>Vote:</strong> {{media.vote}}</h5>
+            
         </div>
     </div>
 </template>
