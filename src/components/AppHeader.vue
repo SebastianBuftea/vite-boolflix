@@ -13,7 +13,16 @@ export default {
         findFilms() {
             let UrlFilmsComplete = `${store.filmsApi}?api_key=${store.keyApi}&query=${store.search}`
             axios.get(UrlFilmsComplete).then((response) => {
-                this.store.filmsShowed = response.data.results
+                let movies_response = response.data.results;
+                movies_response.forEach(element => {
+                    let obj = {
+                        title: element.title,
+                        originalTitle: element.original_title,
+                        language: element.original_language,
+                        vote: element.vote_average
+                    }
+                    this.store.filmsShowed.push(obj)
+                });
 
             })
         }
