@@ -10,35 +10,57 @@ export default {
         }
     },
     methods: {
+        starVotegenerator(voteApi) {
+            this.store.starArray = []
+            let starVote = Math.round(voteApi / 2)
+            for (let i = 0; i < starVote; i++) {
+                this.store.starArray.push('<i class="fa-solid fa-star"></i>')
+            }
+            for (let i = 0; i < 5 - starVote; i++) {
+                this.store.starArray.push('<i class="fa-regular fa-star"></i>')
+            }
+
+        },
         findMovies() {
             this.store.filmsShowed = []
             this.store.seriesShowed = []
 
             let UrlFilmsComplete = `${store.filmsApi}?api_key=${store.keyApi}&query=${store.search}`
             axios.get(UrlFilmsComplete).then((response) => {
+
                 let movies_response = response.data.results;
                 movies_response.forEach(element => {
-                    let obj = {
 
+                    /*  use the star vote generator --> */
+                    this.starVotegenerator(element.vote_average)
+                    /* create obj films */
+                    let obj = {
                         title: element.title,
                         originalTitle: element.original_title,
                         language: element.original_language,
-                        vote: element.vote_average,
+                        vote: store.starArray,
                         image: element.backdrop_path
                     }
                     this.store.filmsShowed.push(obj)
                 });
 
             })
+
             let UrlTvseriesComplete = `${store.tvSeriesApi}?api_key=${store.keyApi}&query=${store.search}`
             axios.get(UrlTvseriesComplete).then((response) => {
+
                 let movies_response = response.data.results;
                 movies_response.forEach(element => {
+
+                    /*  use the star vote generator --> */
+                    this.starVotegenerator(element.vote_average)
+                    /* create obj series */
+
                     let obj = {
                         title: element.name,
                         originalTitle: element.original_name,
                         language: element.original_language,
-                        vote: element.vote_average,
+                        vote: store.starArray,
                         image: element.backdrop_path
                     }
                     this.store.seriesShowed.push(obj)

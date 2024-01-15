@@ -29,8 +29,11 @@ export default {
             <h5><strong>Original Title:</strong> {{media.originalTitle}}</h5>
             <h5><strong>Language:</strong> {{media.language}}</h5>
             <country-flag :country="media.language=='en' ? 'gb':media.language" size='normal'/>
-            <h5><strong>Vote:</strong> {{media.vote}}</h5>
-            
+            <h5><strong>Vote:</strong>
+                <span v-for="(star, index) in media.vote" v-html="star">
+                </span>
+                </h5>
+             <!-- {{media.vote}} -->
         </div>
     </div>
 </template>
@@ -43,7 +46,7 @@ export default {
     background-color: black;
     border: 1px solid black;
     width: 100%;
-    height: 350px;
+    height: 400px;
 
     img {
         width: 100%;
