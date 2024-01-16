@@ -21,7 +21,7 @@ export default {
 
 <template lang="">
     <div>
-            <div class="flip-card  m-1">
+            <div class="flip-card m-1">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img :src="media.image==null ? `https://demofree.sirv.com/nope-not-here.jpg`:` https://image.tmdb.org/t/p/w185${media.image}`" >
