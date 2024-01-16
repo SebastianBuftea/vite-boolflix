@@ -21,6 +21,33 @@ export default {
             }
 
         },
+        moviegenerator(element) {
+            store.character_Array = []
+
+            let UrlCastFilm = `https://api.themoviedb.org/3/movie/${element.id}/credits?api_key=${store.keyApi}`
+            axios.get(UrlCastFilm).then((resp) => {
+                let character_response = resp.data.cast;
+                let actor_list = []
+
+                character_response.forEach(element => {
+                    actor_list.push(element.original_name)
+                })
+
+                store.character_Array = actor_list.slice(0, 5)
+
+                let obj = {
+                    title: element.title,
+                    originalTitle: element.original_title,
+                    language: element.original_language,
+                    vote: store.starArray,
+                    image: element.poster_path,
+                    overview: element.overview,
+                    characters: store.character_Array
+                }
+                this.store.filmsShowed.push(obj)
+            })
+
+        },
         findMovies() {
             this.store.filmsShowed = []
             this.store.seriesShowed = []
@@ -33,16 +60,10 @@ export default {
 
                     /*  use the star vote generator --> */
                     this.starVotegenerator(element.vote_average)
+                    /* this.charactersmovie(element.id) */
                     /* create obj films */
-                    let obj = {
-                        title: element.title,
-                        originalTitle: element.original_title,
-                        language: element.original_language,
-                        vote: store.starArray,
-                        image: element.poster_path,
-                        overview: element.overview
-                    }
-                    this.store.filmsShowed.push(obj)
+                    this.moviegenerator(element)
+
                 });
 
             })
