@@ -46,11 +46,10 @@ export default {
     background-color: black;
     border: 1px solid black;
     width: 100%;
-    height: 400px;
+    height: 500px;
 
     img {
         width: 100%;
-        height: 150px;
         object-fit: fill;
     }
 }

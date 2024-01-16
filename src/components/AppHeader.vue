@@ -39,7 +39,7 @@ export default {
                         originalTitle: element.original_title,
                         language: element.original_language,
                         vote: store.starArray,
-                        image: element.backdrop_path
+                        image: element.poster_path
                     }
                     this.store.filmsShowed.push(obj)
                 });
@@ -61,7 +61,7 @@ export default {
                         originalTitle: element.original_name,
                         language: element.original_language,
                         vote: store.starArray,
-                        image: element.backdrop_path
+                        image: element.poster_path
                     }
                     this.store.seriesShowed.push(obj)
                 });
