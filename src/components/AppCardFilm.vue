@@ -13,9 +13,7 @@ export default {
     data() {
         return {
             store
-
         }
-
     },
 
 }
@@ -23,40 +21,22 @@ export default {
 
 <template lang="">
     <div>
-        <!-- <div class="flip_card p-1 m-1 ">
-            <div class="flip_card_inner">
-                <div class="front">
-                    <img :src="media.image==null ? `https://demofree.sirv.com/nope-not-here.jpg`:` https://image.tmdb.org/t/p/w185${media.image}`" alt="" style="width:300px;height:300px;" >
-                </div>
-
-                <div class="retro">    
-                    <h4> <strong>Title:</strong> {{media.title}}</h4>
-                    <h5><strong>Original Title:</strong> {{media.originalTitle}}</h5>
-                    <h5><strong>Language:</strong> {{media.language}}</h5>
-                    <country-flag :country="media.language=='en' ? 'gb':media.language" size='normal'/>
-                    <h5><strong>Vote:</strong>
-                        <span v-for="(star, index) in media.vote" v-html="star">
-                        </span>
-                    </h5>
-                    <p>{{media.overview}}</p>
-                </div>
-            </div> -->
             <div class="flip-card  m-1">
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                         <img :src="media.image==null ? `https://demofree.sirv.com/nope-not-here.jpg`:` https://image.tmdb.org/t/p/w185${media.image}`" >
                     </div>
-                    <div class="flip-card-back">
-                        <h4> <strong>Title:</strong> {{media.title}}</h4>
-                        <h5><strong>Original Title:</strong> {{media.originalTitle}}</h5>
-                        <h5><strong>Language:</strong> {{media.language}}</h5>
-                        <country-flag :country="media.language=='en' ? 'gb':media.language" size='normal'/>
-                        <h5><strong>Vote:</strong>
-                            <span v-for="(star, index) in media.vote" v-html="star">
-                            </span>
-                        </h5>
-                        <div class>
-                            <p>{{media.overview}}</p>
+                    <div class="flip-card-back ">
+                        <div class="overflow-y-auto p-2 h_content">
+                            <h4> <strong>Title:</strong> {{media.title}}</h4>
+                            <h5><strong>Original Title:</strong> {{media.originalTitle}}</h5>
+                            <h5><strong>Language:</strong> {{media.language}}</h5>
+                            <country-flag :country="media.language=='en' ? 'gb':media.language" size='normal'/>
+                            <h5><strong>Vote:</strong>
+                                <span v-for="(star, index) in media.vote" v-html="star">
+                                </span>
+                            </h5>
+                            <p>Overview:{{media.overview}}</p>
                         </div>
                         
                     </div>
@@ -83,7 +63,6 @@ export default {
         position: relative;
         width: 100%;
         height: 100%;
-        text-align: center;
         transition: transform 0.6s;
         transform-style: preserve-3d;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -111,6 +90,11 @@ export default {
             background-color: black;
             color: white;
             transform: rotateY(180deg);
+
+            .h_content {
+                width: 100%;
+                height: 95%;
+            }
         }
     }
 
